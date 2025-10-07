@@ -47,7 +47,7 @@ const Navbar = () => {
         <ul className="flex gap-4 menu-horizontal">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn text-white bg-gradient-to-r from-[#632EE3] to-[#9F62F2]"> <FaGithub /> Contribute</a>
+        <a href="https://github.com/WaliullahKawsar2" target="_blank" className="btn text-white bg-gradient-to-r from-[#632EE3] to-[#9F62F2]"> <FaGithub /> Contribute</a>
       </div>
     </div>
   );
