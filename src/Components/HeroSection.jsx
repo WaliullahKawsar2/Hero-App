@@ -5,7 +5,7 @@ import heroImg from "../assets/hero.png";
 
 const HeroSection = () => {
   return (
-    <div className="flex-1 flex flex-col justify-center items-center text-center bg-[#d2d2d238] gap-8 pt-20 px-4">
+    <div className="flex-1 flex flex-col justify-center items-center text-center bg-[#d2d2d238] gap-8 pt-20">
       <h1 className="text-[#001931] text-5xl font-extrabold">
         We Build <br />
         <span className="bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">

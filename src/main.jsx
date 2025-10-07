@@ -7,10 +7,12 @@ import MainLayout from './Layouts/MainLayout.jsx'
 import Home from './Pages/Home.jsx'
 import Apps from './Pages/Apps.jsx'
 import Installation from './Pages/Installation.jsx'
+import ErrorPage from './Pages/ErrorPage.jsx'
 
 const router = createBrowserRouter([{
   path:'/',
   Component:MainLayout,
+  errorElement: <ErrorPage/>,
   children:[
     {
       path:'/',
