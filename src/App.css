@@ -1,2 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.active{
+  @apply bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent 
+  /* after:absolute after:bottom-0
+             after:h-[2px] after:w-10 
+             after:bg-gradient-to-r after:from-[#632EE3] after:to-[#9F62F2] */
+}
