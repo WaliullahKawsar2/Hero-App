@@ -2,9 +2,10 @@ import React from "react";
 import useApp from "../hooks/useApp";
 import Card from "./Card";
 import { Link } from "react-router";
+import CardSkeleton from "./CardSkeleton";
 
 const TrendingApps = () => {
-  const { app } = useApp();
+  const { app, loading } = useApp();
   const trendingApps = app.slice(0, 8);
   return (
     <>
@@ -14,7 +15,9 @@ const TrendingApps = () => {
           Explore All Trending Apps on the Market developed by us
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 container mx-auto">
-          {trendingApps.map((data) => (
+          {
+          loading?<CardSkeleton/> :
+          trendingApps.map((data) => (
             <Card key={data.id} data={data} />
           ))}
         </div>

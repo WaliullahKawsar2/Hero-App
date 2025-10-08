@@ -4,6 +4,7 @@ import { FaStar } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import FormatNumber from "../../hooks/FormateNumber";
 import FormatBytes from "../../hooks/FormateBytes";
+import { HandleLocalStorage } from "../../hooks/HandleLocalStorage";
 
 const AppPreview = ({ data }) => {
     
@@ -11,29 +12,18 @@ const AppPreview = ({ data }) => {
 
     useEffect(()=>{
         const installedApp = JSON.parse(localStorage.getItem('installedApp'))
-        const isInstalled = installedApp.some(app=>app.id === data.id)
-        setClicked(isInstalled)
+        if(installedApp != null){
+          
+          const isInstalled = installedApp.some(app=>app.id === data.id)
+          setClicked(isInstalled)
+        }
 
     },[data.id])
     
-    const HandleLocalStorage = ()=>{
-        const installedApp = JSON.parse(localStorage.getItem('installedApp'))
-
-        let updatedInstalledApp = []
-        if(installedApp){
-            const isInstalled = installedApp.some(app=>app.id === data.id)
-            if(isInstalled){
-                 return;
-            }
-            updatedInstalledApp = [...installedApp,data]
-        }
-        else{
-            updatedInstalledApp.push(data)
-        }
-        localStorage.setItem('installedApp',JSON.stringify(updatedInstalledApp))
-        setClicked(true)
-      }
-
+    const btnCLicked = ()=>{
+        HandleLocalStorage(data)
+         setClicked(true)
+    }
 
   return (
     <div className="flex py-7 gap-4 border-b-1">
@@ -70,7 +60,7 @@ const AppPreview = ({ data }) => {
           </div>
         </div>
         <button
-          onClick={HandleLocalStorage}
+          onClick={btnCLicked}
           className="bg-[#00D390] cursor-pointer text-white py-1 px-3 rounded-sm font-medium"
         >{
             clicked? <p>Installed</p>:<p>Install Now (<span>{FormatBytes(data?.size)}</span>)</p>
