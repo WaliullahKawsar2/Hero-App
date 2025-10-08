@@ -9,7 +9,7 @@ const Apps = () => {
   const searched = search.toLocaleLowerCase()
   const filteredData = searched?app.filter(data=>data.title.toLocaleLowerCase().includes(searched)) : app;
   return (
-    <div className="flex-1 bg-[#d2d2d238] flex flex-col text-center px-4 pb-5n">
+    <div className="flex-1 bg-[#d2d2d238] flex flex-col text-center px-4 pb-5">
       <h1 className="text-4xl font-semibold mt-15">Our All Application</h1>
       <p className="text-[#627382] text-[14px] my-4">
         Explore All Apps on the Market developed by us. We code for Millions
@@ -31,7 +31,7 @@ const Apps = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 container mx-auto">
         {
           filteredData.map(data=><Card key={data.id} data={data} />)
         }

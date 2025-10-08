@@ -14,7 +14,7 @@ const AppPreview = ({ data }) => {
         const isInstalled = installedApp.some(app=>app.id === data.id)
         setClicked(isInstalled)
 
-    },[])
+    },[data.id])
     
     const HandleLocalStorage = ()=>{
         const installedApp = JSON.parse(localStorage.getItem('installedApp'))
@@ -31,6 +31,7 @@ const AppPreview = ({ data }) => {
             updatedInstalledApp.push(data)
         }
         localStorage.setItem('installedApp',JSON.stringify(updatedInstalledApp))
+        setClicked(true)
       }
 
 
