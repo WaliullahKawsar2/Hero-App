@@ -8,7 +8,7 @@ import { UninstallApp } from "../hooks/HandleLocalStorage";
 const InstalledApp = ({ data, setInstalledApps }) => {
 
   return (
-    <div className="flex justify-between items-center bg-white rounded-sm p-4">
+    <div className="flex flex-col sm:flex-row  sm:justify-between sm:items-center bg-white rounded-sm p-4 gap-5">
       <div className="flex gap-4">
         <img
           className="rounded-sm max-w-[70px]"

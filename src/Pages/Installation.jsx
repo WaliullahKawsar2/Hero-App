@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSortDown } from "react-icons/fa";
 import InstalledApp from "../Components/InstalledApp";
 import InstalledSkeleton from "../Components/InstalledSkeleton";
@@ -9,6 +9,23 @@ const Installation = () => {
   const [installedApps, setInstalledApps] = useState(
     JSON.parse(localStorage.getItem("installedApp")) || []
   );
+  const [apps, setApps] = useState([]);
+  const [sortOrder, setSortOrder] = useState("");
+
+
+  useEffect(() => {
+    handleSort(sortOrder);
+  }, [installedApps])
+
+  const handleSort = (order) => {
+    if(!order) return setApps(installedApps)
+    const sorted = [...installedApps].sort((a, b) => {
+      return order === "asc" ? a.size - b.size : b.size - a.size;
+    });
+    setApps(sorted);
+    setSortOrder(order)
+  };
+
   return (
     <div className="c flex-1 bg-[#d2d2d238] flex flex-col text-center px-4 pb-5">
       <h1 className="text-4xl font-semibold mt-15">Our All Application</h1>
@@ -31,10 +48,10 @@ const Installation = () => {
             className="dropdown-content bg-base-100 menu mt-1 z-1 w-30 p-1 shadow-sm"
           >
             <li>
-              <a>High to Low</a>
+              <a onClick={()=>handleSort('asc')}>High to Low</a>
             </li>
             <li>
-              <a>Low to High</a>
+              <a onClick={()=>handleSort('desc')}>Low to High</a>
             </li>
           </ul>
         </div>
@@ -44,7 +61,7 @@ const Installation = () => {
         {loading ? (
           <InstalledSkeleton />
         ) : (
-          installedApps.map((data) => (
+          apps.map((data) => (
             <InstalledApp
               key={data.id}
               data={data}
