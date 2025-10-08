@@ -1,13 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import MainLayout from './Layouts/MainLayout.jsx'
 import Home from './Pages/Home.jsx'
 import Apps from './Pages/Apps.jsx'
 import Installation from './Pages/Installation.jsx'
 import ErrorPage from './Pages/ErrorPage.jsx'
+import AppInfo from './Pages/AppInfo.jsx'
 
 const router = createBrowserRouter([{
   path:'/',
@@ -25,7 +25,12 @@ const router = createBrowserRouter([{
     {
       path:'/installation',
       Component:Installation
-    }
+    },
+    {
+      path:'/appinfo/:id',
+      Component:AppInfo
+    },
+    
   ]
 }])
 
