@@ -8,6 +8,7 @@ import Apps from './Pages/Apps.jsx'
 import Installation from './Pages/Installation.jsx'
 import ErrorPage from './Pages/ErrorPage.jsx'
 import AppInfo from './Pages/AppInfo.jsx'
+import NotFound from './Pages/NotFound.jsx'
 
 const router = createBrowserRouter([{
   path:'/',
@@ -25,6 +26,10 @@ const router = createBrowserRouter([{
     {
       path:'/installation',
       Component:Installation
+    },
+    {
+      path:'/notfound',
+      Component:NotFound
     },
     {
       path:'/appinfo/:id',

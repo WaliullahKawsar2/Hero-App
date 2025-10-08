@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import errorImg from "../assets/App-Error.png";
-import Navbar from "../Components/Navbar/Navbar";
-import Footer from "../Components/Footer/Footer";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -13,7 +11,6 @@ const NotFound = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
-      <Navbar />
       <div className="flex-2 flex flex-col justify-center items-center gap-3 p-7">
         <img className="w-full max-w-[320px]" src={errorImg} alt="error" />
         <h2 className="text-4xl font-semibold">Oops, App not found!</h2>
@@ -28,7 +25,6 @@ const NotFound = () => {
           Go Back!
         </button>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -6,7 +6,7 @@ const InstalledSkeleton = () => {
       {Array.from({ length: 5}).map((_, i) => (
         <div
           key={i}
-          className="flex w-full rounded-lg gap-4 bg-white py-4 px-4 shadow-sm justify-between items-center"
+          className="flex flex-col sm:flex-row sm:justify-between sm:items-center w-full rounded-lg gap-4 bg-white py-4 px-4 shadow-sm justify-between"
         >
             <div className="flex gap-7">
                 <div className="skeleton w-15 h-15"></div>
@@ -19,7 +19,7 @@ const InstalledSkeleton = () => {
                     </div>
                 </div>
             </div>
-            <div className="skeleton w-24 h-8"></div>
+            <div className="skeleton w-full sm:w-24 h-8"></div>
         </div>
       ))}
     </>
