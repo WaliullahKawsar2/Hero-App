@@ -13,7 +13,7 @@ Key features include:
 - **Detailed app information** including ratings, reviews, and installation status.
 - **Interactive charts** to visualize app ratings and reviews.
 - Custom **error pages** for invalid routes, and a **loading animation** during navigation and search operations.
-- **Deployment** on Cloudflare/Netlify/Vercel for a reliable production environment.
+- **Deployment** on Vercel for a reliable production environment.
 
 This app is designed to mimic a modern app store experience while providing insights into popular mobile applications.
 
@@ -26,7 +26,7 @@ This app is designed to mimic a modern app store experience while providing insi
 - **CSS3/SCSS** - For styling the components and making the app responsive on all devices.
 - **LocalStorage** - To save and manage the installation state of apps.
 - **Axios** - For handling API calls (if necessary for fetching data).
-- **Vercel/Netlify/Cloudflare** - For deploying the app to the web.
+- **Vercel** - For deploying the app to the web.
 
 ---
 
@@ -62,6 +62,6 @@ This app is designed to mimic a modern app store experience while providing insi
    - Option to uninstall apps with a relevant success message.
 
 ### 9. **Sort by Downloads**
-   - Dropdown to sort apps by download count (High-Low / Low-High).
+   - Dropdown to sort apps by File size (High-Low / Low-High).
 
 ---
