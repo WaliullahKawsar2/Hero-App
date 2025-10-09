@@ -3,6 +3,7 @@ import { FaSortDown } from "react-icons/fa";
 import InstalledApp from "../Components/InstalledApp";
 import InstalledSkeleton from "../Components/InstalledSkeleton";
 import useApp from "../hooks/useApp";
+import { ToastContainer } from "react-toastify";
 
 const Installation = () => {
   const { loading } = useApp();
@@ -69,6 +70,7 @@ const Installation = () => {
             />
           ))
         )}
+        <ToastContainer/>
       </div>
     </div>
   );

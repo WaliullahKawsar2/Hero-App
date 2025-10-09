@@ -1,8 +1,7 @@
 import React from "react";
 
 const CardSkeleton = ({count = 8}) => {
-  return (
-    <>   
+  return ( <>
         {
             Array.from({length : count}).map((_, i) => (
             <div key={i} className="flex w-94 rounded-lg flex-col gap-4 bg-white p-4 shadow-sm">
@@ -15,8 +14,7 @@ const CardSkeleton = ({count = 8}) => {
             </div>
             ))
         }
-    
-    </>
+        </>
   )
 };
 

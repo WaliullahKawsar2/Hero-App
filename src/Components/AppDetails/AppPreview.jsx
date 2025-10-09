@@ -5,25 +5,36 @@ import { FiDownload } from "react-icons/fi";
 import FormatNumber from "../../hooks/FormateNumber";
 import FormatBytes from "../../hooks/FormateBytes";
 import { HandleLocalStorage } from "../../hooks/HandleLocalStorage";
+import { toast, ToastContainer } from "react-toastify";
 
 const AppPreview = ({ data }) => {
-    
-    const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
 
-    useEffect(()=>{
-        const installedApp = JSON.parse(localStorage.getItem('installedApp'))
-        if(installedApp != null){
-          
-          const isInstalled = installedApp.some(app=>app.id === data.id)
-          setClicked(isInstalled)
-        }
-
-    },[data.id])
-    
-    const btnCLicked = ()=>{
-        HandleLocalStorage(data)
-         setClicked(true)
+  useEffect(() => {
+    const installedApp = JSON.parse(localStorage.getItem("installedApp"));
+    if (installedApp != null) {
+      const isInstalled = installedApp.some((app) => app.id === data.id);
+      setClicked(isInstalled);
     }
+  }, [data.id]);
+
+  const btnCLicked = (title) => {
+    HandleLocalStorage(data);
+    setClicked(true);
+    notify(title);
+  };
+
+  const notify = (title) =>
+    toast.success(`${title} installed successfully`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   return (
     <div className="flex py-7 gap-4 border-b-1">
@@ -60,12 +71,18 @@ const AppPreview = ({ data }) => {
           </div>
         </div>
         <button
-          onClick={btnCLicked}
+          onClick={() => btnCLicked(data.title)}
           className="bg-[#00D390] cursor-pointer text-white py-1 px-3 rounded-sm font-medium"
-        >{
-            clicked? <p>Installed</p>:<p>Install Now (<span>{FormatBytes(data?.size)}</span>)</p>
-        }
+        >
+          {clicked ? (
+            <p>Installed</p>
+          ) : (
+            <p>
+              Install Now (<span>{FormatBytes(data?.size)}</span>)
+            </p>
+          )}
         </button>
+        <ToastContainer />
       </div>
     </div>
   );

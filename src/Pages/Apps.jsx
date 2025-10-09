@@ -3,18 +3,19 @@ import { CiSearch } from "react-icons/ci";
 import Card from "../Components/Card";
 import useApp from "../hooks/useApp";
 import CardSkeleton from "../Components/CardSkeleton";
-import { useNavigate } from "react-router";
+import NotFound from "./NotFound";
 
 const Apps = () => {
   const [search, setSearch] = useState("");
   const { app, loading } = useApp();
   const searched = search.toLocaleLowerCase();
+  const [found, setFound] = useState(true);
   const filteredData = searched
     ? app.filter((data) => data.title.toLocaleLowerCase().includes(searched))
     : app;
-  const navigate = useNavigate();
   useEffect(() => {
-    if (!loading && filteredData.length === 0) navigate("/notfound");
+    setFound(true);
+    if (!loading && filteredData.length === 0) setFound(false);
   }, [searched]);
 
   return (
@@ -40,13 +41,20 @@ const Apps = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 container mx-auto">
-        {loading ? (
+
+      {loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 container mx-auto">
           <CardSkeleton />
-        ) : (
-          filteredData.map((data) => <Card key={data.id} data={data} />)
-        )}
-      </div>
+        </div>
+      ) : found ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 container mx-auto">
+          {filteredData.map((data) => (
+            <Card key={data.id} data={data} />
+          ))}
+        </div>
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 };

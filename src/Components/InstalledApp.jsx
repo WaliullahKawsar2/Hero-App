@@ -4,9 +4,25 @@ import { FiDownload } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import FormatBytes from "../hooks/FormateBytes";
 import { UninstallApp } from "../hooks/HandleLocalStorage";
+import { toast } from "react-toastify";
 
 const InstalledApp = ({ data, setInstalledApps }) => {
+  const notify = (title) =>
+    toast.success(`${title} uninstalled successfully`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
+  const btnCLicked = (data, setInstalledApps) => {
+    UninstallApp(data, setInstalledApps);
+    notify(data.title);
+  };
   return (
     <div className="flex flex-col sm:flex-row  sm:justify-between sm:items-center bg-white rounded-sm p-4 gap-5">
       <div className="flex gap-4">
@@ -32,9 +48,14 @@ const InstalledApp = ({ data, setInstalledApps }) => {
           </div>
         </div>
       </div>
-      <button onClick={()=>UninstallApp(data, setInstalledApps)} className="bg-[#00D390] cursor-pointer text-white py-1 px-3 rounded-sm font-medium">
-        Uninstall
-      </button>
+      <div>
+        <button
+          onClick={() => btnCLicked(data, setInstalledApps)}
+          className="bg-[#00D390] cursor-pointer text-white py-1 px-3 rounded-sm font-medium"
+        >
+          Uninstall
+        </button>
+      </div>
     </div>
   );
 };

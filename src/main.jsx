@@ -28,10 +28,6 @@ const router = createBrowserRouter([{
       Component:Installation
     },
     {
-      path:'/notfound',
-      Component:NotFound
-    },
-    {
       path:'/appinfo/:id',
       Component:AppInfo
     },
