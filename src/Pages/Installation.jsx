@@ -21,7 +21,7 @@ const Installation = () => {
   const handleSort = (order) => {
     if(!order) return setApps(installedApps)
     const sorted = [...installedApps].sort((a, b) => {
-      return order === "asc" ? a.size - b.size : b.size - a.size;
+      return order === "desc" ? a.downloads - b.downloads : b.downloads - a.downloads;
     });
     setApps(sorted);
     setSortOrder(order)
